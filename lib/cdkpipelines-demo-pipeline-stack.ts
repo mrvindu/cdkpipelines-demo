@@ -12,6 +12,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
 
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
+    const oauthToken = SecretValue.secretsManager('/automatic-aws-db-shutdown-cdk-new/github/token', {jsonField: 'github-token'});
  
     const pipeline = new CdkPipeline(this, 'Pipeline', {
       // The pipeline name
@@ -22,7 +23,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
       sourceAction: new codepipeline_actions.GitHubSourceAction({
         actionName: 'GitHub',
         output: sourceArtifact,
-        oauthToken: SecretValue.plainText('github-token'),
+        oauthToken: oauthToken,
         owner: 'mrvindu',
         repo: 'cdkpipelines-demo',
       }),
