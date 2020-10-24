@@ -4,6 +4,8 @@ import { Construct, SecretValue, Stack, StackProps } from '@aws-cdk/core';
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
 import { CdkpipelinesDemoStage } from './cdkpipelines-demo-stage';
 import { ShellScriptAction } from '@aws-cdk/pipelines';
+
+
 /**
  * The stack that defines the application pipeline
  */
@@ -38,11 +40,6 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
          buildCommand: 'npm run build'
        }),
     });
-
-   // This is where we add the application stages
-      pipeline.addApplicationStage(new CdkpipelinesDemoStage(this, 'PreProd', {
-       env: { account: '810799446236', region: 'eu-west-1' }
-      }));
 
       const preprod = new CdkpipelinesDemoStage(this, 'PreProd', {
         env: { account: '810799446236', region: 'eu-west-1' }
