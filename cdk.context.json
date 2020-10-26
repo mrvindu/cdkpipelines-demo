@@ -1,4 +1,0 @@
-{
-  "ssm:account=810799446236:parameterName=/plt/environment/account:region=eu-west-1": "810799446236",
-  "ssm:account=810799446236:parameterName=/plt/github/branch:region=eu-west-1": "master"
-}
