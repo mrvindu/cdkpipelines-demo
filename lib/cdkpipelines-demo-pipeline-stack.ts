@@ -18,8 +18,10 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
     const oauthToken = SecretValue.secretsManager('/cdkpipelines-demo-pipeline-stack/github/token', {jsonField: 'github-token'});
-    const EnvironmentAccount = StringParameter.valueFromLookup(this, "/plt/environment/account");
-    const RepoBranch = StringParameter.valueFromLookup(this, "/plt/github/branch");
+    // const EnvironmentAccount = SecretValue.secretsManager('/plt/environment/account', {jsonField: 'EnvironmentAccount'});
+    // const RepoBranch = SecretValue.secretsManager('/plt/github/branch', {jsonField: 'RepoBranch'});
+    // const EnvironmentAccount = StringParameter.valueFromLookup(this, "/plt/environment/account");
+    // const RepoBranch = StringParameter.valueFromLookup(this, "/plt/github/branch");
 
     const pipeline = new CdkPipeline(this, 'Pipeline', {
       // The pipeline name
@@ -33,7 +35,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
         oauthToken: oauthToken,
         owner: 'mrvindu',
         repo: 'cdkpipelines-demo',
-        branch: RepoBranch,
+        branch: 'master',
       }),
 
        // How it will be built and synthesized
@@ -47,7 +49,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     });
 
       const preprod = new CdkpipelinesDemoStage(this, 'PreProd', {
-        env: { account: EnvironmentAccount, region: 'eu-west-1' }
+        env: { account: '810799446236', region: 'eu-west-1' }
       });
       const preprodStage = pipeline.addApplicationStage(preprod);
       preprodStage.addActions(new ShellScriptAction({
