@@ -4,7 +4,7 @@ import { Construct, SecretValue, Stack, StackProps } from '@aws-cdk/core';
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
 import { CdkpipelinesDemoStage } from './cdkpipelines-demo-stage';
 import { ShellScriptAction } from '@aws-cdk/pipelines';
-import {StringParameter} from "@aws-cdk/aws-ssm";
+// import {StringParameter} from "@aws-cdk/aws-ssm";
 
 
 
@@ -18,7 +18,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
     const oauthToken = SecretValue.secretsManager('/cdkpipelines-demo-pipeline-stack/github/token', {jsonField: 'github-token'});
-    const EnvironmentAccount = StringParameter.valueFromLookup(this, "/plt/environment/account");
+    // const EnvironmentAccount = StringParameter.valueFromLookup(this, "/plt/environment/account");
 
     const pipeline = new CdkPipeline(this, 'Pipeline', {
       // The pipeline name
@@ -45,7 +45,7 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
     });
 
       const preprod = new CdkpipelinesDemoStage(this, 'PreProd', {
-        env: { account: EnvironmentAccount, region: 'eu-west-1' }
+        env: { account: '810799446236', region: 'eu-west-1' }
       });
       const preprodStage = pipeline.addApplicationStage(preprod);
       preprodStage.addActions(new ShellScriptAction({
