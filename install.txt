@@ -1,21 +1,20 @@
-    2  yum install git
-    3  git clone https://github.com/mrvindu/cdkpipelines-demo.git
-    5  cd cdkpipelines-demo/
-    6  aws configure
-    7  vi ~/.aws/credentials 
-    8  vi ~/.aws/config 
-   11  node --version
-   12  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-   13  . ~/.nvm/nvm.sh
-   14  nvm install node
-   15  node -e "console.log('Running Node.js ' + process.version)"
-   16  node --version
-   17  npm install -g aws-cdk
-   18  cdk --version
-   19  npm install -g typescript
-   20  aws s3 ls --profile mrpadigala2
-   26  npx cdk bootstrap   --profile mrpadigala2   --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess   aws://xxx/eu-west-1
-   27  npm i
-   28  npx cdk bootstrap   --profile mrpadigala2   --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess   aws://xxx/eu-west-1
-   29  npx cdk deploy   --profile mrpadigala2   CdkpipelinesDemoPipelineStack
-   31  npm run build
+    yum install git
+    git clone https://github.com/mrvindu/cdkpipelines-demo.git
+    cd cdkpipelines-demo/
+    aws configure
+    vi ~/.aws/credentials 
+    vi ~/.aws/config 
+    node --version
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+    . ~/.nvm/nvm.sh
+    nvm install node
+    node -e "console.log('Running Node.js ' + process.version)"
+    node --version
+    npm install -g aws-cdk
+    cdk --version
+    npm install -g typescript
+    aws s3 ls --profile mrpadigala2
+       npm install
+    npx cdk bootstrap --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess   aws://356709741166/eu-west-1
+    npx cdk deploy CdkpipelinesDemoPipelineStack
+    npm run build
