@@ -4,9 +4,10 @@
 node_modules
 
 # CDK asset staging directory
-.cdk.staging
-cdk.out
 cdk.context.json
+.cdk.staging/
+cdk.out/
+*.tabl.json
 
 
 # Parcel default cache directory
